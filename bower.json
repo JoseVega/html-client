@@ -1,0 +1,14 @@
+{
+  "name": "LiveChat-html-client",
+  "version": "0.1.1",
+  "devDependencies": {
+    "jquery-mousewheel": "jquery/jquery-mousewheel",
+    "jquery-titlealert": "heyman/jquery-titlealert",
+    "mustache.js": "~2.2.0",
+    "socket.io-client": "socketio/socket.io-client#~1.3.7",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "magnific-popup": "~1.0.0"
+  },
+  "ignore": [ "dist.zip" ]
+}
