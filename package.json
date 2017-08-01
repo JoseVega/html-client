@@ -1,5 +1,5 @@
 {
-  "name": "LiveChat",
+  "name": "wp-messenger/html-client",
   "version": "0.1.1",
   "devDependencies": {
     "grunt": "~0.4.1",
