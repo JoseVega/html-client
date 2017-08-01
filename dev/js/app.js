@@ -34,25 +34,25 @@ var liveChat = {
 			current_user_username: '',
 			floatingChatBoxWidth: 245,
 			texts: {
-				fileBeingUploaded: 'El archivo se está subiendo...',
-				contactsMobileDropdownTitle: 'Contactos',
-				noContactsFound: 'No se encontraron usuarios',
-				chattingWith: 'Chat con {{display_name}}',
-				writeMessageHere: "Escribe aqui el mensaje",
-				searchContacts: 'Buscar contactos',
-				searchMessagesInConversation: "Buscar en conversacion",
-				userIsWriting: "{{display_name}} está escribiendo...",
-				tooManyFloatingBoxesOpened: 'Tienes muchas ventanas de chats abiertas, por favor cierra alguna para poder abrir otras.',
-				hoursAgo: 'Hace {{unit}} horas',
-				hourAgo: 'Hace {{unit}} hora',
-				minutesAgo: 'Hace {{unit}} minutos',
-				minuteAgo: 'Hace {{unit}} minuto',
-				daysAgo: 'Hace {{unit}} días',
-				monthsAgo: 'Hace {{unit}} meses',
-				yesterday: 'Ayer',
-				today: 'Ahora',
-				now: 'En este momento',
-				nonExistentContacts: 'Tu lista de contactos se encuentra vacía.',
+				fileBeingUploaded: 'The file is uploading...',
+				contactsMobileDropdownTitle: 'Contacts',
+				noContactsFound: 'Users not found',
+				chattingWith: 'Chat with {{display_name}}',
+				writeMessageHere: "Write your message here",
+				searchContacts: 'Search contacts',
+				searchMessagesInConversation: "Search in conversation",
+				userIsWriting: "{{display_name}} is writing...",
+				tooManyFloatingBoxesOpened: 'You have too many chats opened, please close some to be able to open new ones.',
+				hoursAgo: '{{unit}} hours ago',
+				hourAgo: '{{unit}} hour ago',
+				minutesAgo: '{{unit}} minutes ago',
+				minuteAgo: '{{unit}} minute ago',
+				daysAgo: '{{unit}} days ago',
+				monthsAgo: '{{unit}} months ago',
+				yesterday: 'Yesterday',
+				today: 'Today',
+				now: 'Now',
+				nonExistentContacts: 'Your contacts list is empty.',
 			},
 			defaultAvatarUrl: '', // if empty: this.settings.clientUrl + 'imgs/default_avatar.png'
 			env: 'prod', // dev | prod
@@ -65,7 +65,7 @@ var liveChat = {
 					'<input type="text" id="search-chat" class="form-control contacts-search" placeholder="' + defaultSettings.texts.searchContacts + '">' +
 					'<div class="glyphicon glyphicon-search" id="glyphiconSearch-fixed"></div>' +
 					'</div>',
-			required_elements: '<audio id="chatSound" src="{{clientUrl}}sound/chat_sound.mp3"></audio>' +
+			required_elements: '<audio id="chatSound" src="{{newMessageSoundUrl}}"></audio>' +
 					' <a class="image-popup-no-margins" style="display: none;">' +
 					'<img id="image-popup" width="0" height="0">' +
 					'</a>',
@@ -107,6 +107,9 @@ var liveChat = {
 		}
 		if (!this.settings.floatingChatSendButtonUrl) {
 			this.settings.floatingChatSendButtonUrl = this.settings.clientUrl + 'imgs/sendbtn.png';
+		}
+		if (!this.settings.newMessageSoundUrl) {
+			this.settings.newMessageSoundUrl = this.settings.clientUrl + 'sound/chat_sound.mp3';
 		}
 
 		if (!this.areRequiredSettingsSet()) {
@@ -231,7 +234,7 @@ var liveChat = {
 				console.log(template);
 				Mustache.parse(template); // optional, speeds up future uses
 
-				var rendered = Mustache.render(template, {clientUrl: liveChat.settings.clientUrl});
+				var rendered = Mustache.render(template, liveChat.settings);
 				$widget.replaceWith(rendered);
 			});
 			jQuery('body').trigger("liveChat.widgetsRendered");
