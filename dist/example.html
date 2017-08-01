@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LiveChat Widgets</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        @media only screen and (max-width: 991px) {
+            .container {
+                width: 100%;
+            }
+        }
+        .container {
+            width: 90%;
+            overflow: hidden;
+            margin: 0 auto;
+            padding: 0px 15px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="vg-chat vg-chat-widget-holder" data-widget="contacts_list"></div>
+            <div class="vg-chat vg-chat-widget-holder" data-widget="chat_box"></div>
+        </div>
+        <div class="vg-chat vg-chat-widget-holder" data-widget="floating_chat"></div>
+        <div class="vg-chat vg-chat-widget-holder" data-widget="required_elements"></div>
+<script type="text/javascript" src="vendor/libraries.min.js"></script>
+<script type="text/javascript" src="js/livechat.min.js"></script>
+        <script>
+        // sample config
+        liveChat.init(
+        {
+            backendUrl: 'http://pruebas.local.vegacorp.me/chat/chat_backend/api.php',
+            socketServerUrl: 'http://pruebas.local.vegacorp.me:4000',
+            clientUrl: 'http://pruebas.local.vegacorp.me/chat/chat_client/dist/',
+            siteId: 'BEIw938ajsdbdw3423d',
+            env: 'prod',
+            defaultAvatarUrl: '',
+            current_user_id: 6,
+            current_user_username: 'JoseVega',
+            current_user_avatar: 'http://pruebas.local.vegacorp.me/chat/wp-content/uploads/2016/01/perfil.jpg',
+            current_user_display_name: 'Jose Vega',
+        });
+        </script>
+        <!--testing-->
+        <script>
+        function callTest()
+        {
+            $(".chatBox").remove();
+            liveChat.api.openChatBox(2, 'Aleksandar Nikolic', null);
+        }
+        function callTest2()
+        {
+            $(".chatBox").remove();
+            liveChat.api.renderFloatingBox(2, 'Aleksandar Nikolic', null);
+        }
+        $('img').on('load', function()
+        {
+            console.log('yes');
+        });
+        </script>
+    </body>
+</html>
